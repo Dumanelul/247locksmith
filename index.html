@@ -107,7 +107,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center w-full">
                 
-                <!-- Logo -->
+                <!-- Partea Stângă: Logo -->
                 <div class="flex-1 flex justify-start items-center">
                     <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer group" onclick="scrollToSection('main-content')">
                         <i class="fa-solid fa-lock text-brandPurple text-xl group-hover:scale-110 transition-transform duration-300"></i>
@@ -115,23 +115,43 @@
                     </div>
                 </div>
                 
-                <!-- Meniu Central Animat -->
-                <div class="flex justify-center items-center gap-6 md:gap-10">
+                <!-- Partea Centrală: Meniu Desktop (Ascuns pe ecrane mici) -->
+                <div class="hidden lg:flex justify-center items-center gap-6 xl:gap-10">
                     <button onclick="scrollToSection('main-content')" id="nav-home" class="nav-btn active font-semibold text-sm md:text-base transition whitespace-nowrap">Home</button>
                     <button onclick="scrollToSection('services-section')" id="nav-services" class="nav-btn font-semibold text-sm md:text-base transition whitespace-nowrap">Services</button>
                     <button onclick="scrollToSection('areas-section')" id="nav-areas" class="nav-btn font-semibold text-sm md:text-base transition whitespace-nowrap">Areas we cover</button>
                     <button onclick="scrollToSection('contact-section')" id="nav-contact" class="nav-btn font-semibold text-sm md:text-base transition whitespace-nowrap">Contact</button>
                 </div>
                 
-                <!-- Buton Contact Dreapta -->
-                <div class="flex-1 flex justify-end items-center">
+                <!-- Partea Dreaptă: Buton Contact & Hamburger Mobil -->
+                <div class="flex-1 flex justify-end items-center gap-4">
+                    <!-- Buton verde (Ascuns pe telefoane foarte inguste pentru a evita suprapunerea) -->
                     <a href="https://wa.me/447386574378?text=Hello,%20I%20need%20emergency%20locksmith%20services." 
-                       class="hidden md:flex bg-brandGreen hover:bg-green-500 text-white px-5 py-2.5 rounded-full font-bold items-center gap-2 transition hover:shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:-translate-y-0.5 whitespace-nowrap">
+                       class="hidden sm:flex bg-brandGreen hover:bg-green-500 text-white px-5 py-2.5 rounded-full font-bold items-center gap-2 transition hover:shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:-translate-y-0.5 whitespace-nowrap">
                         <i class="fa-brands fa-whatsapp text-lg"></i> Contact Us
                     </a>
+                    
+                    <!-- Buton Hamburger Meniu Mobil (Apare doar pe ecrane < 1024px) -->
+                    <button id="hamburger-btn" class="lg:hidden text-white hover:text-brandPurple focus:outline-none transition-colors" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars text-3xl"></i>
+                    </button>
                 </div>
                 
             </div>
+        </div>
+        
+        <!-- Meniul care cade (Dropdown) pentru Mobil -->
+        <div id="mobile-menu" class="hidden flex-col items-center bg-[#101012] border-b border-[#222] py-8 gap-8 shadow-2xl w-full lg:hidden absolute top-20 left-0">
+            <button onclick="scrollToSection('main-content'); toggleMobileMenu()" class="text-white hover:text-brandPurple font-semibold text-xl transition">Home</button>
+            <button onclick="scrollToSection('services-section'); toggleMobileMenu()" class="text-white hover:text-brandPurple font-semibold text-xl transition">Services</button>
+            <button onclick="scrollToSection('areas-section'); toggleMobileMenu()" class="text-white hover:text-brandPurple font-semibold text-xl transition">Areas we cover</button>
+            <button onclick="scrollToSection('contact-section'); toggleMobileMenu()" class="text-white hover:text-brandPurple font-semibold text-xl transition">Contact</button>
+            
+            <!-- Butonul WhatsApp repozitionat in meniu pe mobil (pentru ecrane foarte mici unde butonul de sus a fost ascuns) -->
+            <a href="https://wa.me/447386574378?text=Hello,%20I%20need%20emergency%20locksmith%20services." 
+               class="sm:hidden flex bg-brandGreen hover:bg-green-500 text-white px-8 py-4 rounded-full font-bold items-center gap-2 mt-4 shadow-[0_0_15px_rgba(37,211,102,0.4)]">
+                <i class="fa-brands fa-whatsapp text-xl"></i> Contact Us Now
+            </a>
         </div>
     </nav>
 
@@ -404,7 +424,7 @@
             </div>
         </section>
 
-        <!-- ==================== NEW: CONTACT SECTION ==================== -->
+        <!-- NEW: CONTACT SECTION -->
         <section id="contact-section" class="py-24 px-4 max-w-5xl mx-auto relative border-t border-[#222]">
             <div class="mb-12">
                 <h1 class="text-4xl md:text-5xl font-extrabold uppercase mb-6 text-white tracking-tight">The Fastest Way to Reach Us</h1>
@@ -445,7 +465,6 @@
                 </div>
             </div>
         </section>
-        <!-- ==================== END CONTACT SECTION ==================== -->
     </div>
 
     <!-- View Detalii Servicii -->
@@ -523,6 +542,24 @@
                      top: offsetPosition,
                      behavior: "smooth"
                 });
+            }
+        }
+
+        // Functie meniu mobil
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#hamburger-btn i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
             }
         }
 
