@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locksmith 24/7 David</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#121212',
+                        brandBlack: '#0a0a0a',
+                        brandPurple: '#b266ff',
+                        brandPurpleDark: '#2d1b4e',
+                        brandGreen: '#25D366',
+                        textLight: '#F8F9FA',
+                        textGrey: '#a0a0a0',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hidden-tab { display: none !important; }
+        .dashed-list li { border-bottom: 1px dashed #333; padding-bottom: 0.75rem; margin-bottom: 0.75rem; }
+        .dashed-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        
+        .form-input {
+            background-color: #0a0a0a;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+            padding: 0.75rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #b266ff;
+            box-shadow: 0 0 15px rgba(178, 102, 255, 0.2);
+        }
+        .form-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #a0a0a0;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        /* Animatii la incarcare */
+        .opacity-0 { opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        
+        /* Animație avansată pentru butoanele de navigare (Underline Glisant) */
+        .nav-btn {
+            position: relative;
+            color: #F8F9FA;
+            transition: color 0.3s ease;
+        }
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #b266ff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        .nav-btn:hover { color: #b266ff; }
+        .nav-btn:hover::after, .nav-btn.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .nav-btn.active {
+            color: #b266ff;
+        }
+    </style>
+</head>
+<body class="bg-[#101012] text-textLight font-sans antialiased overflow-x-hidden selection:bg-brandPurple selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 bg-[#151518]/95 backdrop-blur-sm border-b border-[#222] shadow-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center w-full">
+                
+                <!-- Logo -->
+                <div class="flex-1 flex justify-start items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer group" onclick="scrollToSection('main-content')">
+                        <i class="fa-solid fa-lock text-brandPurple text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="font-bold text-xl md:text-2xl tracking-tight text-white whitespace-nowrap">Locksmith 24/7 <span class="text-brandPurple">David</span></span>
+                    </div>
+                </div>
+                
+                <!-- Meniu Central Animat -->
+                <div class="flex justify-center items-center gap-6 md:gap-10">
+                    <button onclick="scrollToSection('main-content')" id="nav-home" class="nav-btn active font-semibold text-sm md:text-base transition whitespace-nowrap">Home</button>
+                    <button onclick="scrollToSection('services-section')" id="nav-services" class="nav-btn font-semibold text-sm md:text-base transition whitespace-nowrap">Services</button>
+                    <button onclick="scrollToSection('areas-section')" id="nav-areas" class="nav-btn font-semibold text-sm md:text-base transition whitespace-nowrap">Areas we cover</button>
+                    <button onclick="scrollToSection('contact-section')" id="nav-contact" class="nav-btn font-semibold text-sm md:text-base transition whitespace-nowrap">Contact</button>
+                </div>
+                
+                <!-- Buton Contact Dreapta -->
+                <div class="flex-1 flex justify-end items-center">
+                    <a href="https://wa.me/447386574378?text=Hello,%20I%20need%20emergency%20locksmith%20services." 
+                       class="hidden md:flex bg-brandGreen hover:bg-green-500 text-white px-5 py-2.5 rounded-full font-bold items-center gap-2 transition hover:shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:-translate-y-0.5 whitespace-nowrap">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Contact Us
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+
+    <div id="main-content" class="pt-20">
+        <!-- Hero Section -->
+        <section class="py-16 md:py-24 px-4 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-20 pointer-events-none">
+                <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-brandPurple/5 blur-[120px] rounded-full"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="flex flex-col items-start text-left relative z-10">
+                    <div class="border border-brandPurple text-brandPurple text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full mb-8 bg-brandPurple/10 opacity-0 animate-fade-in-up">
+                        Emergency Locksmith
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-extrabold uppercase mb-2 tracking-tight text-white opacity-0 animate-fade-in-up delay-100 relative">
+                        LOCKED OUT?
+                    </h1>
+                    
+                    <div class="relative opacity-0 animate-fade-in-up delay-200">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[150%] bg-brandPurple/30 blur-[80px] rounded-full -z-10 animate-pulse-slow"></div>
+                        <h1 class="text-5xl md:text-7xl font-extrabold uppercase mb-8 tracking-tight text-brandPurple relative z-10 drop-shadow-md">
+                            WE CAN HELP!
+                        </h1>
+                    </div>
+
+                    <p class="text-lg md:text-xl text-textGrey mb-10 font-medium max-w-2xl text-balance opacity-0 animate-fade-in-up delay-300 pr-4">
+                        NO JOB TOO BIG. NO JOB TOO SMALL. WE DO IT ALL! <br>
+                        <span class="text-white font-bold block mt-1">FAST RESPONSE. QUALITY SERVICE. PEACE OF MIND.</span>
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto opacity-0 animate-fade-in-up delay-400">
+                        <div class="relative group">
+                            <div class="absolute -inset-2 bg-brandGreen/40 rounded-full blur-2xl group-hover:bg-brandGreen/50 transition duration-500 -z-10"></div>
+                            <a href="https://wa.me/447386574378?text=Hello,%20I%20need%20emergency%20locksmith%20services." 
+                               class="relative bg-brandGreen hover:bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg flex justify-center items-center gap-3 transition-all duration-300 hover:-translate-y-1 shadow-lg border border-transparent hover:border-green-400">
+                                <i class="fa-brands fa-whatsapp text-2xl drop-shadow"></i> WhatsApp Us Now
+                            </a>
+                        </div>
+                        
+                        <a href="tel:+447386574378" 
+                           class="bg-[#1a1a1c] hover:bg-[#252528] border border-[#333] hover:border-brandPurple/50 text-white px-8 py-4 rounded-full font-bold text-lg flex justify-center items-center gap-3 transition-all duration-300 hover:-translate-y-1 shadow-lg group">
+                            <i class="fa-solid fa-phone text-brandPurple group-hover:scale-110 transition-transform duration-300"></i> +44 7386 574378
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-[#151518]/90 backdrop-blur-md border border-[#333] rounded-2xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.5)] relative opacity-0 animate-fade-in-up delay-300">
+                    <div class="absolute -inset-1 bg-gradient-to-br from-brandPurple/10 to-transparent rounded-2xl blur-xl -z-10"></div>
+                    
+                    <h2 class="text-3xl font-extrabold uppercase mb-2 text-white">Request a call back</h2>
+                    <p class="text-textGrey text-sm mb-8">Not an emergency? Send this and we will come back to you. For anything urgent, please call.</p>
+                    
+                    <form id="enquiry-form" action="https://script.google.com/macros/s/AKfycbzpZdfhNDZIHl-h76ogM9-eqmBP4GDnaGyxyIkvcoQk85qevhlSrIIxS9KTfaJZqfdt0g/exec" method="POST" target="hidden_iframe" onsubmit="submitForm()">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="form-label">Your Name</label>
+                                <input type="text" id="form-name" name="name" class="form-input" required>
+                            </div>
+                            <div>
+                                <label class="form-label">Phone</label>
+                                <input type="tel" id="form-phone" name="phone" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="form-label">Postcode</label>
+                                <input type="text" id="form-postcode" name="postcode" class="form-input" placeholder="e.g. B1 1AA" required>
+                            </div>
+                            <div>
+                                <label class="form-label">Service</label>
+                                <select id="form-service" name="service" class="form-input">
+                                    <option value="Emergency Locksmith">Emergency Locksmith</option>
+                                    <option value="Lock Replacement">Lock Replacement</option>
+                                    <option value="Lock Repairs">Lock Repairs</option>
+                                    <option value="uPVC Door Repairs">uPVC Door Repairs</option>
+                                    <option value="Emergency Door Opening">Emergency Door Opening</option>
+                                    <option value="Broken Key Extraction">Broken Key Extraction</option>
+                                    <option value="Burglary Repairs">Burglary Repairs</option>
+                                    <option value="Boarding Up">Boarding Up</option>
+                                    <option value="Security Upgrades">Security Upgrades</option>
+                                    <option value="Commercial Locksmith">Commercial Locksmith</option>
+                                    <option value="Residential Locksmith">Residential Locksmith</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <label class="form-label">What is happening with the door?</label>
+                            <textarea id="form-details" name="details" class="form-input h-24 resize-none" placeholder="e.g. uPVC back door, handle lifts but will not lock" required></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full bg-brandPurple hover:bg-[#9c4dff] text-white font-bold py-4 rounded transition-all duration-300 text-lg mb-4 hover:shadow-[0_0_20px_rgba(178,102,255,0.4)] hover:-translate-y-0.5">
+                            Send enquiry
+                        </button>
+                        
+                        <p class="text-[#777] text-xs">This sends a request directly to our team. Need someone now? Call +44 7386 574378.</p>
+                    </form>
+                    
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleIframeLoad()"></iframe>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Trust Signals Bar -->
+        <section class="bg-[#151518] py-12 border-t border-b border-[#222]">
+            <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="flex flex-col items-center gap-4 group cursor-default">
+                    <i class="fa-solid fa-stopwatch text-brandPurple text-4xl group-hover:scale-110 group-hover:-rotate-12 transition-all duration-300 drop-shadow-[0_0_10px_rgba(178,102,255,0.3)]"></i>
+                    <h3 class="font-bold text-lg uppercase tracking-wide text-white">Fast Response</h3>
+                    <p class="text-textGrey text-sm">Rapid dispatch to your location across our coverage area.</p>
+                </div>
+                <div class="flex flex-col items-center gap-4 group cursor-default">
+                    <i class="fa-solid fa-shield-halved text-brandPurple text-4xl group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_10px_rgba(178,102,255,0.3)]"></i>
+                    <h3 class="font-bold text-lg uppercase tracking-wide text-white">Reliable Service</h3>
+                    <p class="text-textGrey text-sm">Professional, experienced, and fully equipped for any door.</p>
+                </div>
+                <div class="flex flex-col items-center gap-4 group cursor-default">
+                    <i class="fa-solid fa-thumbs-up text-brandPurple text-4xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 drop-shadow-[0_0_10px_rgba(178,102,255,0.3)]"></i>
+                    <h3 class="font-bold text-lg uppercase tracking-wide text-white">Fair Prices</h3>
+                    <p class="text-textGrey text-sm">Transparent pricing with no hidden fees before we start.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-8 bg-brandPurple text-center shadow-[inset_0_0_30px_rgba(0,0,0,0.2)]">
+            <h2 class="text-xl md:text-2xl font-bold uppercase tracking-wider text-white drop-shadow-md">
+                <i class="fa-regular fa-clock mr-2 animate-pulse"></i> We are available 24/7 - 7 days a week!
+            </h2>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services-section" class="py-24 px-4 max-w-7xl mx-auto relative">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80%] bg-brandPurple/5 blur-[150px] rounded-full -z-10 pointer-events-none"></div>
+            
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-extrabold uppercase mb-4 text-white">Our Complete Services</h1>
+                <p class="text-textGrey text-lg max-w-2xl mx-auto">Scroll to view or click on any service below to view full details and book immediately.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+            </div>
+        </section>
+
+        <!-- AREAS WE COVER SECTION -->
+        <section id="areas-section" class="py-24 px-4 max-w-7xl mx-auto relative border-t border-[#222]">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80%] bg-brandPurple/5 blur-[150px] rounded-full -z-10 pointer-events-none"></div>
+            
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-extrabold uppercase mb-4 text-white">Areas We Cover</h1>
+                <p class="text-textGrey text-lg max-w-2xl mx-auto">Covering Birmingham and the surrounding regions up to a 50km radius. Fast, local response when you need it most.</p>
+            </div>
+
+            <div class="flex flex-col gap-12">
+                <div>
+                    <div class="flex items-baseline gap-4 mb-6 border-b border-[#333] pb-2">
+                        <h2 class="text-2xl font-extrabold uppercase text-white tracking-wide">Central Birmingham</h2>
+                        <span class="text-textGrey text-xs tracking-widest uppercase">4 Areas Covered</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">City Centre</span> <span class="text-textGrey text-xs tracking-wider">B1-B5</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Jewellery Quarter</span> <span class="text-textGrey text-xs tracking-wider">B18</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Edgbaston</span> <span class="text-textGrey text-xs tracking-wider">B15</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Aston</span> <span class="text-textGrey text-xs tracking-wider">B6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-baseline gap-4 mb-6 border-b border-[#333] pb-2">
+                        <h2 class="text-2xl font-extrabold uppercase text-white tracking-wide">North & Staffordshire</h2>
+                        <span class="text-textGrey text-xs tracking-widest uppercase">5 Areas Covered</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Sutton Coldfield</span> <span class="text-textGrey text-xs tracking-wider">B73-B76</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Erdington</span> <span class="text-textGrey text-xs tracking-wider">B23, B24</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Lichfield</span> <span class="text-textGrey text-xs tracking-wider">WS13, WS14</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Tamworth</span> <span class="text-textGrey text-xs tracking-wider">B77, B78</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Walsall</span> <span class="text-textGrey text-xs tracking-wider">WS1-WS9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-baseline gap-4 mb-6 border-b border-[#333] pb-2">
+                        <h2 class="text-2xl font-extrabold uppercase text-white tracking-wide">South & Worcestershire</h2>
+                        <span class="text-textGrey text-xs tracking-widest uppercase">5 Areas Covered</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Moseley & Kings Heath</span> <span class="text-textGrey text-xs tracking-wider">B13, B14</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Bournville</span> <span class="text-textGrey text-xs tracking-wider">B30</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Solihull</span> <span class="text-textGrey text-xs tracking-wider">B91-B94</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Redditch</span> <span class="text-textGrey text-xs tracking-wider">B97, B98</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Bromsgrove</span> <span class="text-textGrey text-xs tracking-wider">B60, B61</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-baseline gap-4 mb-6 border-b border-[#333] pb-2">
+                        <h2 class="text-2xl font-extrabold uppercase text-white tracking-wide">West & Black Country</h2>
+                        <span class="text-textGrey text-xs tracking-widest uppercase">5 Areas Covered</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Dudley</span> <span class="text-textGrey text-xs tracking-wider">DY1-DY3</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Wolverhampton</span> <span class="text-textGrey text-xs tracking-wider">WV1-WV14</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Stourbridge</span> <span class="text-textGrey text-xs tracking-wider">DY7-DY9</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Halesowen</span> <span class="text-textGrey text-xs tracking-wider">B62, B63</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">West Bromwich</span> <span class="text-textGrey text-xs tracking-wider">B70, B71</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-baseline gap-4 mb-6 border-b border-[#333] pb-2">
+                        <h2 class="text-2xl font-extrabold uppercase text-white tracking-wide">East & Warwickshire</h2>
+                        <span class="text-textGrey text-xs tracking-widest uppercase">4 Areas Covered</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Sheldon</span> <span class="text-textGrey text-xs tracking-wider">B26</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Coventry</span> <span class="text-textGrey text-xs tracking-wider">CV1-CV8</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Nuneaton</span> <span class="text-textGrey text-xs tracking-wider">CV10, CV11</span>
+                        </div>
+                        <div class="border border-[#333] rounded-full px-5 py-2.5 hover:border-brandPurple hover:bg-brandPurple/10 transition-colors cursor-default">
+                            <span class="font-bold text-white mr-1">Coleshill</span> <span class="text-textGrey text-xs tracking-wider">B46</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== NEW: CONTACT SECTION ==================== -->
+        <section id="contact-section" class="py-24 px-4 max-w-5xl mx-auto relative border-t border-[#222]">
+            <div class="mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold uppercase mb-6 text-white tracking-tight">The Fastest Way to Reach Us</h1>
+                <p class="text-textGrey text-lg leading-relaxed max-w-3xl">For anything urgent, call. A phone call gets an engineer moving in minutes; a form does not. The line is answered 24 hours a day, including nights, weekends and bank holidays.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Call Us -->
+                <div class="bg-[#151518] p-8 rounded-xl border border-[#333] hover:border-brandPurple/50 hover:shadow-[0_10px_25px_rgba(178,102,255,0.1)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-solid fa-phone text-3xl text-brandPurple mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-bold uppercase text-white mb-3">Call Us</h3>
+                    <p class="text-textGrey text-sm mb-8">24/7 emergency line, answered by an engineer. We aim to be with you within 30 minutes.</p>
+                    <a href="tel:+447386574378" class="text-brandPurple font-bold hover:text-white transition-colors text-lg tracking-wide">+44 7386 574378 &rarr;</a>
+                </div>
+
+                <!-- WhatsApp Us -->
+                <div class="bg-[#151518] p-8 rounded-xl border border-[#333] hover:border-brandPurple/50 hover:shadow-[0_10px_25px_rgba(178,102,255,0.1)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-brands fa-whatsapp text-3xl text-brandPurple mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-bold uppercase text-white mb-3">WhatsApp Us</h3>
+                    <p class="text-textGrey text-sm mb-8">Send a photo of your lock or door and we will tell you what it needs.</p>
+                    <a href="https://wa.me/447386574378?text=Hello,%20I%20need%20emergency%20locksmith%20services." class="text-brandPurple font-bold hover:text-white transition-colors text-lg tracking-wide">+44 7386 574378 &rarr;</a>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-[#151518] p-8 rounded-xl border border-[#333] hover:border-brandPurple/50 hover:shadow-[0_10px_25px_rgba(178,102,255,0.1)] hover:-translate-y-1 transition-all duration-300 group">
+                    <i class="fa-regular fa-envelope text-3xl text-brandPurple mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-bold uppercase text-white mb-3">Email</h3>
+                    <p class="text-textGrey text-sm mb-8">For insurance paperwork, planned work and business account enquiries.</p>
+                    <a href="mailto:Deividstefan287@gmail.com" class="text-brandPurple font-bold hover:text-white transition-colors text-lg tracking-wide break-all">Deividstefan287@gmail.com &rarr;</a>
+                </div>
+
+                <!-- Where We Work -->
+                <div class="bg-[#151518] p-8 rounded-xl border border-[#333] hover:border-brandPurple/50 hover:shadow-[0_10px_25px_rgba(178,102,255,0.1)] hover:-translate-y-1 transition-all duration-300 group flex flex-col items-start">
+                    <i class="fa-solid fa-location-dot text-3xl text-brandPurple mb-6 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-bold uppercase text-white mb-3">Where We Work</h3>
+                    <p class="text-textGrey text-sm mb-8 flex-grow">Mobile service across North, Central, South and East Birmingham and surrounding regions.</p>
+                    <button onclick="scrollToSection('areas-section')" class="text-brandPurple font-bold hover:text-white transition-colors text-lg tracking-wide">See all areas &rarr;</button>
+                </div>
+            </div>
+        </section>
+        <!-- ==================== END CONTACT SECTION ==================== -->
+    </div>
+
+    <!-- View Detalii Servicii -->
+    <div id="service-detail-view" class="hidden-tab py-24 px-4 max-w-7xl mx-auto">
+        <button onclick="closeServiceDetail()" class="text-brandPurple hover:text-white mb-8 font-bold flex items-center gap-2 transition-colors duration-300 group">
+            <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i> Back to all services
+        </button>
+        
+        <div class="mb-12 border-b border-[#333] pb-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold uppercase mb-6 text-white" id="detail-title">SERVICE TITLE</h1>
+            <p class="text-textGrey text-lg max-w-3xl mb-8" id="detail-intro">Intro text</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="tel:+447386574378" class="bg-brandPurple hover:bg-[#9c4dff] text-white px-6 py-3 font-bold rounded flex items-center gap-2 transition-all duration-300 hover:shadow-[0_0_15px_rgba(178,102,255,0.4)] hover:-translate-y-0.5">
+                    <i class="fa-solid fa-phone"></i> +44 7386 574378
+                </a>
+                <a href="#" id="detail-wa-btn-top" class="bg-brandGreen hover:bg-green-500 text-white px-6 py-3 font-bold rounded flex items-center gap-2 transition-all duration-300 hover:shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp us
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2 flex flex-col gap-10" id="detail-sections">
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="bg-[#151518] border border-[#333] rounded-xl p-6 mb-6 shadow-xl">
+                    <h3 class="text-white font-extrabold text-xl uppercase mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-brandPurple"></i> What this covers
+                    </h3>
+                    <ul class="text-textGrey text-sm dashed-list" id="detail-covers">
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-b from-[#151518] to-[#101012] border border-[#333] rounded-xl p-6 flex flex-col gap-4 text-center shadow-xl">
+                     <p class="text-textGrey text-xs">Speak to an engineer 24/7. We aim to be with you within 30 minutes.</p>
+                     <a href="tel:+447386574378" class="bg-brandPurple hover:bg-[#9c4dff] text-white py-3 font-bold rounded flex justify-center items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-[0_0_15px_rgba(178,102,255,0.4)] hover:-translate-y-0.5">
+                        <i class="fa-solid fa-phone"></i> Call Now
+                    </a>
+                    <a href="#" id="detail-wa-btn-bottom" class="bg-brandGreen hover:bg-green-500 text-white py-3 font-bold rounded flex justify-center items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] py-10 border-t border-[#222] text-center mt-auto relative overflow-hidden">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-1/2 bg-brandPurple/5 blur-[80px] rounded-full pointer-events-none"></div>
+        <p class="text-xl font-bold tracking-widest text-textLight mb-3 uppercase relative z-10">Your Security. Our Commitment.</p>
+        <p class="text-textGrey text-sm relative z-10">© 2026 Locksmith 24/7 David. All rights reserved.</p>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/447386574378?text=Hello,%20I%20need%20emergency%20locksmith%20services." 
+       class="fixed bottom-6 right-6 bg-brandGreen text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_10px_30px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform duration-300 z-50 hover:animate-none border-2 border-brandDark group">
+        <i class="fa-brands fa-whatsapp group-hover:rotate-12 transition-transform"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        function scrollToSection(sectionId) {
+            if (!document.getElementById('service-detail-view').classList.contains('hidden-tab')) {
+                closeServiceDetail(false); 
+            }
+            
+            const element = document.getElementById(sectionId);
+            if(element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+                window.scrollTo({
+                     top: offsetPosition,
+                     behavior: "smooth"
+                });
+            }
+        }
+
+        let isSubmitted = false;
+
+        function submitForm() {
+            isSubmitted = true;
+            const btn = document.getElementById('submit-btn');
+            
+            btn.innerText = "Sending...";
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            btn.disabled = true;
+        }
+
+        function handleIframeLoad() {
+            if (isSubmitted) {
+                const btn = document.getElementById('submit-btn');
+                
+                btn.innerText = "Request Sent Successfully!";
+                btn.classList.remove('bg-brandPurple', 'opacity-50', 'cursor-not-allowed', 'hover:shadow-[0_0_20px_rgba(178,102,255,0.4)]', 'hover:bg-[#9c4dff]');
+                btn.classList.add('bg-brandGreen', 'shadow-[0_0_20px_rgba(37,211,102,0.4)]'); 
+                
+                document.getElementById('enquiry-form').reset();
+                isSubmitted = false;
+                
+                setTimeout(() => {
+                    btn.innerText = "Send enquiry";
+                    btn.classList.remove('bg-brandGreen', 'shadow-[0_0_20px_rgba(37,211,102,0.4)]');
+                    btn.classList.add('bg-brandPurple', 'hover:shadow-[0_0_20px_rgba(178,102,255,0.4)]', 'hover:bg-[#9c4dff]');
+                    btn.disabled = false;
+                }, 5000);
+            }
+        }
+
+        const servicesData = {
+            "emergency": {
+                icon: "fa-truck-fast", title: "Emergency Locksmith", shortDesc: "Locked out or lost your keys? We are on the road 24/7.",
+                intro: "When you are locked out, time is everything. We operate a true 24-hour emergency service across the area, aiming to be with you within 30 minutes of your call.",
+                sections: [ { subtitle: "NON-DESTRUCTIVE ENTRY", content: "We pick, decode and bypass locks rather than reaching straight for the drill. The vast majority of doors are opened without any damage to the existing lock, saving you the cost of a replacement." }, { subtitle: "FULLY EQUIPPED VANS", content: "If a lock does need replacing, or you've suffered a break-in, our vans carry a comprehensive stock of BS3621 mortice locks, anti-snap cylinders and uPVC mechanisms to finish the job on the first visit." } ],
+                covers: ["24/7 Emergency response", "Non-destructive lock opening", "Lost or stolen key replacement", "Post-burglary securing", "uPVC, composite and wooden doors"]
+            },
+            "replacement": {
+                icon: "fa-lock", title: "Lock Replacement", shortDesc: "Upgrade your security instantly with insurance-approved locks.",
+                intro: "Whether you have just moved into a new property, lost a set of keys, or want to upgrade your security to meet insurance requirements, we provide and fit premium locks on the spot.",
+                sections: [ { subtitle: "INSURANCE COMPLIANCE", content: "Most home insurance policies require exterior timber doors to be fitted with a BS3621 mortice lock. We ensure your new hardware meets these exact standards so your policy remains valid." }, { subtitle: "MOVING HOUSE?", content: "You never know how many copies of the old keys exist. Changing the locks is the only way to guarantee you are the only one with access to your new home." } ],
+                covers: ["BS3621 Mortice locks supplied & fitted", "Anti-snap Euro cylinders", "Rim cylinders (Yale type) replacements", "High-security smart lock installation", "New homeowner complete lock changes"]
+            },
+            "repairs": {
+                icon: "fa-wrench", title: "Lock Repairs", shortDesc: "Stiff or spinning lock? We fix and restore your mechanisms.",
+                intro: "A lock that has become stiff, gritty or unreliable is usually warning you before it fails completely. Book a repair now rather than a lockout later.",
+                sections: [ { subtitle: "REPAIR OR REPLACE — AN HONEST ANSWER", content: "We will tell you when a repair is a false economy. If a lock body is worn beyond tolerance, replacing it is the right call and we will say so. If all your door needs is a hinge adjustment, that is what we will do — and nothing more." }, { subtitle: "ALIGNMENT IS THE USUAL CULPRIT", content: "Doors move. Timber swells in winter, uPVC expands in summer, and hinges sag under the weight of a solid door. Correcting the alignment protects the lock you already have." }, { subtitle: "DO NOT FORCE IT", content: "If a key is stiff, stop and call. Forcing a stiff key until it snaps turns a ten-minute service into an emergency." } ],
+                covers: ["Stiff, sticking or grinding locks serviced", "Handles that have dropped or spin", "Doors that only lock when you lift and shove", "Misaligned keeps and strike plates adjusted", "Worn nightlatch mechanisms repaired"]
+            },
+            "upvc": {
+                icon: "fa-door-closed", title: "uPVC Door Repairs", shortDesc: "Multipoint gearboxes, handles, and hinges repaired.",
+                intro: "uPVC and composite doors rely on complex multipoint locking systems. When they fail, you don't need a new door — you just need the mechanism repaired or replaced.",
+                sections: [ { subtitle: "COMMON uPVC FAULTS", content: "If you cannot turn the key, or the handle is completely floppy, the central gearbox has likely failed. We carry overnight stock of all major brands (Yale, GU, ERA, Maco) to fix this securely." }, { subtitle: "REALIGNMENT SERVICES", content: "If the door is catching on the frame or you have to force the handle up to lock it, the hinges need adjusting. Catching this early prevents the multipoint gearbox from snapping." } ],
+                covers: ["Failed multipoint gearboxes replaced", "Floppy or broken door handles", "Stiff locking mechanisms serviced", "Dropped doors realigned on hinges", "Lock cylinder upgrades"]
+            },
+            "opening": {
+                icon: "fa-unlock-keyhole", title: "Emergency Door Opening", shortDesc: "Non-destructive entry to get you back inside without damage.",
+                intro: "Left the keys inside? Door blew shut? We specialize in gaining entry to residential and commercial properties with zero damage to the door or frame.",
+                sections: [ { subtitle: "PICKING AND DECODING FIRST", content: "We use specialist locksmith tools to manipulate the pins within the cylinder, or decode the lock entirely. Drilling is absolutely the last resort, never the default approach." }, { subtitle: "FAST AND EFFICIENT", content: "Our engineers have the training and experience to bypass modern security systems quickly, getting you out of the cold and back into your property safely." } ],
+                covers: ["Keys locked inside the property", "Slammed doors opened", "Faulty latch bypassing", "Letterbox tool entry", "Zero-damage guarantee where possible"]
+            },
+            "extraction": {
+                icon: "fa-key-skeleton", title: "Broken Key Extraction", shortDesc: "Snapped a key? We safely extract it and cut a new one.",
+                intro: "Keys suffer metal fatigue over time, often snapping off right inside the cylinder. We can extract the broken fragment safely, usually saving the existing lock.",
+                sections: [ { subtitle: "SPECIALIST EXTRACTION TOOLS", content: "Do not try to pull the key out with superglue or tweezers — this usually pushes the fragment further into the mechanism, ruining the lock. We use specialized extractor hooks to grip the keyways." }, { subtitle: "REPLACEMENT KEYS", content: "Once the fragment is out, if you don't have a spare, we can often decode the lock or supply a brand new cylinder on the spot." } ],
+                covers: ["Snapped keys removed from cylinders", "Jammed mortice keys extracted", "No damage to the existing lock body", "New cylinders fitted if required", "Padlock key extraction"]
+            },
+            "burglary": {
+                icon: "fa-house-crack", title: "Burglary Repairs", shortDesc: "Fast response break-in aftercare to secure your home.",
+                intro: "Suffering a break-in is highly distressing. Our priority is to secure your property immediately, repairing damage and upgrading your hardware to prevent a repeat incident.",
+                sections: [ { subtitle: "IMMEDIATE SECURITY", content: "We repair split frames, replace snapped locks, and fit temporary structural support if the door is heavily damaged. You will sleep secure the same night." }, { subtitle: "PREVENTATIVE UPGRADES", content: "Burglars often exploit known weaknesses, like snapping standard euro cylinders. We will replace compromised locks with TS007 3-star anti-snap cylinders and reinforce the frame with London bars." } ],
+                covers: ["Emergency securing of forced doors", "Split wooden frame repairs", "Smashed glass boarding", "Anti-snap lock installation", "Insurance repair reports provided"]
+            },
+            "boarding": {
+                icon: "fa-hammer", title: "Boarding Up", shortDesc: "Emergency boarding to make your property weatherproof.",
+                intro: "Whether caused by vandalism, a break-in, or severe weather, broken glass compromises the safety and weatherproofing of your property. We provide rapid boarding services.",
+                sections: [ { subtitle: "SECURE AND HEAVY DUTY", content: "We use high-grade structural timber to board up smashed shopfronts, residential windows, and glass doors, fitting them securely from the inside where possible to prevent removal." }, { subtitle: "COMMERCIAL & RESIDENTIAL", content: "From small domestic windows to large commercial retail glass panels, our emergency vans are stocked with materials to handle the job at 3 AM just as easily as 3 PM." } ],
+                covers: ["Smashed shopfronts secured", "Broken residential windows boarded", "Temporary weatherproofing", "Vandalism emergency response", "Making properties safe overnight"]
+            },
+            "security": {
+                icon: "fa-shield-cat", title: "Security Upgrades", shortDesc: "Stay ahead of intruders with modern anti-snap locks.",
+                intro: "Don't wait for a break-in to realize your locks were outdated. We audit and upgrade your property's security to modern, high-resistance standards.",
+                sections: [ { subtitle: "BEATING LOCK SNAPPING", content: "Standard uPVC locks can be broken in seconds using simple tools. We install TS007 3-Star cylinders which feature sacrificial sections and hardened steel cores to completely defeat snapping attacks." }, { subtitle: "FRAME REINFORCEMENT", content: "A strong lock is useless on a weak frame. We fit London Bars, Birmingham Bars, and hinge bolts to reinforce timber doors against kicking and forced entry." } ],
+                covers: ["TS007 3-Star Anti-Snap cylinders", "BS3621 Mortice deadlocks", "London and Birmingham bars", "Sash jammers for uPVC windows", "Smart lock and access control fitting"]
+            },
+            "commercial": {
+                icon: "fa-building", title: "Commercial Locksmith", shortDesc: "Protect your business with master key systems.",
+                intro: "We understand that business security issues mean downtime and lost revenue. We offer priority response for shops, offices, warehouses, and managed properties.",
+                sections: [ { subtitle: "MASTER KEY SYSTEMS", content: "Control exactly who goes where. We can design and install suited lock systems where staff have limited access, but managers have a single master key that opens all doors." }, { subtitle: "FIRE EXIT & PANIC HARDWARE", content: "Commercial properties must comply with strict fire safety laws. We service, repair, and install panic bars, push pads, and emergency exit hardware to ensure compliance and safety." } ],
+                covers: ["Master key and suited systems", "High-security commercial deadlocks", "Digital mechanical access locks", "Panic hardware and fire exits", "Roller shutter lock replacement"]
+            },
+            "residential": {
+                icon: "fa-house-chimney-window", title: "Residential Locksmith", shortDesc: "Complete home security for houses, flats, and landlords.",
+                intro: "Your home is your sanctuary. From a simple lock change to a full security overhaul for a new property, we provide trusted, DBS-checked residential services.",
+                sections: [ { subtitle: "LANDLORD & HMO SERVICES", content: "We work with private landlords and letting agents across the area, providing tenant lockouts, end-of-tenancy lock changes, and thumbturn cylinders for fire regulation compliance in HMOs." }, { subtitle: "GARAGES & OUTBUILDINGS", content: "Sheds and garages are prime targets for thieves. We upgrade standard up-and-over garage locks and supply heavy-duty hasps and padlocks for outbuildings." } ],
+                covers: ["House and flat lockouts", "End of tenancy lock changes", "Thumbturn cylinder installation", "Garage door security upgrades", "Mailbox and cabinet locks"]
+            }
+        };
+
+        function renderServicesGrid() {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = '';
+            
+            let delay = 0;
+            for (const [id, service] of Object.entries(servicesData)) {
+                const card = `
+                <div class="bg-[#151518] p-8 rounded-xl border border-[#222] hover:border-brandPurple/50 hover:-translate-y-2 transition-all duration-300 group cursor-pointer flex flex-col justify-between hover:shadow-[0_15px_30px_rgba(178,102,255,0.15)] relative overflow-hidden opacity-0 animate-fade-in-up" style="animation-delay: ${delay}ms" onclick="openService('${id}')">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brandPurple/5 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+                    <div>
+                        <i class="fa-solid ${service.icon} text-4xl text-brandPurple mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 drop-shadow-md"></i>
+                        <h3 class="text-xl font-bold mb-3 uppercase text-white">${service.title}</h3>
+                        <p class="text-textGrey text-sm mb-6 group-hover:text-gray-300 transition-colors">${service.shortDesc}</p>
+                    </div>
+                    <span class="text-brandPurple font-bold text-sm uppercase tracking-wider group-hover:text-[#c48eff] transition-colors flex items-center gap-2">
+                        View details <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </div>`;
+                grid.innerHTML += card;
+                delay += 50; 
+            }
+        }
+
+        function openService(id) {
+            const service = servicesData[id];
+            if(!service) return;
+
+            document.getElementById('detail-title').innerText = service.title;
+            document.getElementById('detail-intro').innerText = service.intro;
+            
+            const waText = encodeURIComponent(`Hello, I need help with ${service.title}`);
+            const waLink = `https://wa.me/447386574378?text=${waText}`;
+            document.getElementById('detail-wa-btn-top').href = waLink;
+            document.getElementById('detail-wa-btn-bottom').href = waLink;
+
+            let sectionsHTML = '';
+            service.sections.forEach(sec => {
+                sectionsHTML += `
+                <div>
+                    <h2 class="text-2xl font-extrabold uppercase mb-4 text-white">${sec.subtitle}</h2>
+                    <p class="text-textGrey leading-relaxed">${sec.content}</p>
+                </div>`;
+            });
+            document.getElementById('detail-sections').innerHTML = sectionsHTML;
+
+            let coversHTML = '';
+            service.covers.forEach(item => {
+                coversHTML += `<li>${item}</li>`;
+            });
+            document.getElementById('detail-covers').innerHTML = coversHTML;
+
+            document.getElementById('main-content').classList.add('hidden-tab');
+            document.getElementById('service-detail-view').classList.remove('hidden-tab');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeServiceDetail(doScroll = true) {
+            document.getElementById('service-detail-view').classList.add('hidden-tab');
+            document.getElementById('main-content').classList.remove('hidden-tab');
+            if (doScroll) {
+                scrollToSection('services-section');
+            }
+        }
+
+        window.onload = function() {
+            renderServicesGrid();
+            
+            window.addEventListener('scroll', function() {
+                if(document.getElementById('service-detail-view').classList.contains('hidden-tab')) {
+                    const servicesSection = document.getElementById('services-section');
+                    const areasSection = document.getElementById('areas-section');
+                    const contactSection = document.getElementById('contact-section');
+                    
+                    const navHome = document.getElementById('nav-home');
+                    const navServices = document.getElementById('nav-services');
+                    const navAreas = document.getElementById('nav-areas');
+                    const navContact = document.getElementById('nav-contact');
+                    
+                    const scrollPos = window.scrollY;
+                    
+                    // Resetare clase active
+                    navHome.classList.remove('active');
+                    navServices.classList.remove('active');
+                    navAreas.classList.remove('active');
+                    navContact.classList.remove('active');
+                    
+                    // Activare in functie de zona din pagina
+                    if (scrollPos >= contactSection.offsetTop - 300) {
+                        navContact.classList.add('active');
+                    } else if (scrollPos >= areasSection.offsetTop - 300) {
+                        navAreas.classList.add('active');
+                    } else if (scrollPos >= servicesSection.offsetTop - 300) {
+                        navServices.classList.add('active');
+                    } else {
+                        navHome.classList.add('active');
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
